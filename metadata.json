@@ -1,0 +1,8 @@
+{
+  "name": "Queens Perfume & Beauty",
+  "description": "متجر كوينز للعطور الفاخرة ومستحضرات التجميل والعناية بالبشرة - Queens Perfume & Beauty luxury boutique.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

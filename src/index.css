@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-brand-plum: #49363a;
+    --color-brand-rose: #b87982;
+    --color-brand-blush: #fff8f5;
+    --color-brand-surface: #f3dfe1;
+    --color-brand-border: #eedcda;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'El Messiri', 'Plus Jakarta Sans', system-ui, sans-serif;
+    background-color: #fff8f5;
+    color: #49363a;
+  }
+}
+
+.font-display-luxury {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-arabic-title {
+  font-family: 'El Messiri', serif;
+}
+
+.font-body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}

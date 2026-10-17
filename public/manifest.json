@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "Queens Perfume & Beauty",
+  "short_name": "Queens",
+  "description": "متجر كوينز للعطور الفاخرة ومستحضرات التجميل - الأردن",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff8f5",
+  "theme_color": "#49363a",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='128' fill='%2349363a'/%3E%3Cpath d='M120 340 L80 160 L180 240 L256 120 L332 240 L432 160 L392 340 Z' fill='%23b87982'/%3E%3Crect x='100' y='360' width='312' height='24' rx='12' fill='%23f3dfe1'/%3E%3C/svg%3E",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
