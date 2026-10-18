@@ -24,18 +24,20 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   currency,
   language,
 }) => {
-  if (!product) return null;
-
   const isAr = language === 'ar';
   const currencyConfig = CURRENCY_RATES[currency];
 
   const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState<string>(
-    product.availableSizes ? product.availableSizes[0] : product.volumeOrSize
-  );
-  const [selectedShade, setSelectedShade] = useState(
-    product.shades ? product.shades[0] : undefined
-  );
+  const [selectedSize, setSelectedSize] = useState<string>('');
+  const [selectedShade, setSelectedShade] = useState<{ nameAr: string; nameEn: string; hex: string } | undefined>(undefined);
+
+  useEffect(() => {
+    if (product) {
+      setSelectedSize(product.availableSizes ? product.availableSizes[0] : product.volumeOrSize);
+      setSelectedShade(product.shades ? product.shades[0] : undefined);
+      setQuantity(1);
+    }
+  }, [product]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -44,6 +46,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
+
+  if (!product) return null;
 
   const formatPrice = (priceSAR: number) => {
     const converted = Math.round(priceSAR * currencyConfig.rate);

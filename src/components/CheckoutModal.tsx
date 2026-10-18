@@ -23,8 +23,6 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   language,
   onOrderSuccess,
 }) => {
-  if (!isOpen) return null;
-
   const isAr = language === 'ar';
   const currencyConfig = CURRENCY_RATES[currency];
   const ArrowIcon = isAr ? ArrowLeft : ArrowRight;
@@ -37,6 +35,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   const [confirmedOrder, setConfirmedOrder] = useState<OrderDetails | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [copiedCliq, setCopiedCliq] = useState(false);
+
+  if (!isOpen) return null;
 
   const rawSubtotal = items.reduce(
     (sum, item) => sum + item.product.priceSAR * item.quantity,

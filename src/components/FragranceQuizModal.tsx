@@ -19,8 +19,6 @@ export const FragranceQuizModal: React.FC<FragranceQuizModalProps> = ({
   onOpenProductDetail,
   language,
 }) => {
-  if (!isOpen) return null;
-
   const isAr = language === 'ar';
   const ArrowNext = isAr ? ArrowLeft : ArrowRight;
 
@@ -29,6 +27,8 @@ export const FragranceQuizModal: React.FC<FragranceQuizModalProps> = ({
   const [selectedOccasion, setSelectedOccasion] = useState<string>('signature');
   const [selectedAura, setSelectedAura] = useState<string>('regal');
   const [resultProduct, setResultProduct] = useState<Product | null>(null);
+
+  if (!isOpen) return null;
 
   const questions = [
     {

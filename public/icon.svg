@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="128" fill="#49363a"/>
+  <!-- Crown Icon -->
+  <path d="M120 340 L80 160 L180 240 L256 120 L332 240 L432 160 L392 340 Z" fill="#b87982"/>
+  <!-- Base Band -->
+  <rect x="100" y="360" width="312" height="24" rx="12" fill="#f3dfe1"/>
+  <!-- Jewel Stars -->
+  <circle cx="80" cy="150" r="14" fill="#f3dfe1"/>
+  <circle cx="256" cy="110" r="16" fill="#f3dfe1"/>
+  <circle cx="432" cy="150" r="14" fill="#f3dfe1"/>
+</svg>

@@ -341,88 +341,102 @@ export default function App() {
       <Footer language={language} />
 
       {/* Product Detail Modal */}
-      <ProductDetailModal
-        product={activeModalProduct}
-        onClose={() => setActiveModalProduct(null)}
-        onAddToCart={handleAddToCart}
-        isWishlisted={activeModalProduct ? wishlistIds.includes(activeModalProduct.id) : false}
-        onToggleWishlist={handleToggleWishlist}
-        currency={currency}
-        language={language}
-      />
+      {activeModalProduct && (
+        <ProductDetailModal
+          product={activeModalProduct}
+          onClose={() => setActiveModalProduct(null)}
+          onAddToCart={handleAddToCart}
+          isWishlisted={wishlistIds.includes(activeModalProduct.id)}
+          onToggleWishlist={handleToggleWishlist}
+          currency={currency}
+          language={language}
+        />
+      )}
 
       {/* Interactive Scent Finder Quiz */}
-      <FragranceQuizModal
-        isOpen={isQuizOpen}
-        onClose={() => setIsQuizOpen(false)}
-        onAddToCart={(p) => handleAddToCart(p, 1)}
-        onOpenProductDetail={setActiveModalProduct}
-        currency={currency}
-        language={language}
-      />
+      {isQuizOpen && (
+        <FragranceQuizModal
+          isOpen={isQuizOpen}
+          onClose={() => setIsQuizOpen(false)}
+          onAddToCart={(p) => handleAddToCart(p, 1)}
+          onOpenProductDetail={setActiveModalProduct}
+          currency={currency}
+          language={language}
+        />
+      )}
 
       {/* Shopping Bag Slide-Over Drawer */}
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        items={cart}
-        onUpdateQuantity={handleUpdateCartQuantity}
-        onRemoveItem={handleRemoveCartItem}
-        onProceedToCheckout={handleProceedToCheckout}
-        currency={currency}
-        language={language}
-      />
+      {isCartOpen && (
+        <CartDrawer
+          isOpen={isCartOpen}
+          onClose={() => setIsCartOpen(false)}
+          items={cart}
+          onUpdateQuantity={handleUpdateCartQuantity}
+          onRemoveItem={handleRemoveCartItem}
+          onProceedToCheckout={handleProceedToCheckout}
+          currency={currency}
+          language={language}
+        />
+      )}
 
       {/* Checkout Modal */}
-      <CheckoutModal
-        isOpen={isCheckoutOpen}
-        onClose={() => setIsCheckoutOpen(false)}
-        items={cart}
-        discountPercent={checkoutDiscount}
-        currency={currency}
-        language={language}
-        onOrderSuccess={handleOrderSuccess}
-      />
+      {isCheckoutOpen && (
+        <CheckoutModal
+          isOpen={isCheckoutOpen}
+          onClose={() => setIsCheckoutOpen(false)}
+          items={cart}
+          discountPercent={checkoutDiscount}
+          currency={currency}
+          language={language}
+          onOrderSuccess={handleOrderSuccess}
+        />
+      )}
 
       {/* Wishlist Modal */}
-      <WishlistModal
-        isOpen={isWishlistOpen}
-        onClose={() => setIsWishlistOpen(false)}
-        wishlistIds={wishlistIds}
-        products={productsList}
-        onRemoveFromWishlist={handleToggleWishlist}
-        onAddToCart={(p) => handleAddToCart(p, 1)}
-        onOpenProductDetail={setActiveModalProduct}
-        currency={currency}
-        language={language}
-      />
+      {isWishlistOpen && (
+        <WishlistModal
+          isOpen={isWishlistOpen}
+          onClose={() => setIsWishlistOpen(false)}
+          wishlistIds={wishlistIds}
+          products={productsList}
+          onRemoveFromWishlist={handleToggleWishlist}
+          onAddToCart={(p) => handleAddToCart(p, 1)}
+          onOpenProductDetail={setActiveModalProduct}
+          currency={currency}
+          language={language}
+        />
+      )}
 
       {/* Store Owner Admin / Self-Management Panel */}
-      <AdminPanelModal
-        isOpen={isAdminOpen}
-        onClose={() => setIsAdminOpen(false)}
-        settings={storeSettings}
-        onSaveSettings={(newSet) => {
-          setStoreSettings(newSet);
-          showToast(
-            language === 'ar' ? 'تم تحديث إعدادات المتجر بنجاح' : 'Settings updated',
-            'info'
-          );
-        }}
-        products={productsList}
-        onAddProduct={handleAddProduct}
-        onDeleteProduct={handleDeleteProduct}
-        onUpdateProductPrice={handleUpdateProductPrice}
-        orders={ordersList}
-        language={language}
-      />
+      {isAdminOpen && (
+        <AdminPanelModal
+          isOpen={isAdminOpen}
+          onClose={() => setIsAdminOpen(false)}
+          settings={storeSettings}
+          onSaveSettings={(newSet) => {
+            setStoreSettings(newSet);
+            showToast(
+              language === 'ar' ? 'تم تحديث إعدادات المتجر بنجاح' : 'Settings updated',
+              'info'
+            );
+          }}
+          products={productsList}
+          onAddProduct={handleAddProduct}
+          onDeleteProduct={handleDeleteProduct}
+          onUpdateProductPrice={handleUpdateProductPrice}
+          orders={ordersList}
+          language={language}
+        />
+      )}
 
       {/* Mobile App Install Modal */}
-      <InstallAppModal
-        isOpen={isInstallOpen}
-        onClose={() => setIsInstallOpen(false)}
-        language={language}
-      />
+      {isInstallOpen && (
+        <InstallAppModal
+          isOpen={isInstallOpen}
+          onClose={() => setIsInstallOpen(false)}
+          language={language}
+        />
+      )}
 
       {/* Floating WhatsApp Quick Action Button */}
       <FloatingWhatsApp

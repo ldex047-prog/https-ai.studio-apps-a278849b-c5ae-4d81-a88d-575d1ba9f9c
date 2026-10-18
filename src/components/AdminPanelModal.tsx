@@ -15,6 +15,7 @@ import {
   RotateCcw,
   Sparkles,
   MessageCircle,
+  Download,
 } from 'lucide-react';
 import { StoreSettings, Product, OrderDetails, Language } from '../types';
 import { DEFAULT_STORE_SETTINGS } from '../config/store';
@@ -44,8 +45,6 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
   orders,
   language,
 }) => {
-  if (!isOpen) return null;
-
   const isAr = language === 'ar';
   const [activeTab, setActiveTab] = useState<'settings' | 'products' | 'orders' | 'guide'>('settings');
 
@@ -73,6 +72,8 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
   const [editingPriceId, setEditingPriceId] = useState<string | null>(null);
   const [tempPriceJOD, setTempPriceJOD] = useState<string>('');
   const [deletingProductId, setDeletingProductId] = useState<string | null>(null);
+
+  if (!isOpen) return null;
 
   const handleSaveSettings = (e: React.FormEvent) => {
     e.preventDefault();
@@ -895,6 +896,31 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({
                 </h4>
                 <p className="text-xs text-[#49363a]/80">
                   ستجدين دائماً زراً ثابتاً في أعلى الموقع وفي أسفل الصفحة يحمل اسم <strong>«إدارة متجري / حسابي ⚙️»</strong> يفتح لكِ هذه اللوحة مباشرة في أي وقت لتعديل ما ترغبين به.
+                </p>
+              </div>
+
+              {/* Step 5 / Export Project for Vercel */}
+              <div className="p-5 border-2 border-[#b87982]/30 rounded-xl bg-[#fff8f5] space-y-3">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h4 className="font-bold text-[#49363a] flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-full bg-[#b87982] text-white flex items-center justify-center text-xs font-bold">
+                      5
+                    </span>
+                    <span>{isAr ? 'تصدير وتحميل المشروع كاملاً (ملف ZIP جاهز لـ Vercel)' : 'Export & Download Project for Vercel (ZIP)'}</span>
+                  </h4>
+                  <a
+                    href="/queens-perfume-project.zip"
+                    download="queens-perfume-project.zip"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#49363a] hover:bg-[#38282b] text-white rounded-lg text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer"
+                  >
+                    <Download className="w-4 h-4 text-[#f3dfe1]" />
+                    <span>{isAr ? 'تحميل المشروع كاملاً (ZIP)' : 'Download Project ZIP'}</span>
+                  </a>
+                </div>
+                <p className="text-xs text-[#49363a]/80">
+                  {isAr
+                    ? 'يحتوي الملف المضغوط على كامل الشيفرة المصدرية للمتجر، ملفات التكوين (package.json و vite.config.ts و vercel.json)، وتصميم المتجر بالكامل، جاهز فوراً للنشر على منصة Vercel بنقرة واحدة.'
+                    : 'The ZIP archive contains the complete source code and configurations (package.json, vite.config.ts, vercel.json) ready for instant deployment on Vercel.'}
                 </p>
               </div>
             </div>

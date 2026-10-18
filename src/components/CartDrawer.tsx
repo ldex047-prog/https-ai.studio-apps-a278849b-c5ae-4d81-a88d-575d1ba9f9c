@@ -24,8 +24,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   currency,
   language,
 }) => {
-  if (!isOpen) return null;
-
   const isAr = language === 'ar';
   const currencyConfig = CURRENCY_RATES[currency];
   const ArrowIcon = isAr ? ArrowLeft : ArrowRight;
@@ -33,6 +31,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const [promoCode, setPromoCode] = useState('');
   const [discountPercent, setDiscountPercent] = useState(0);
   const [promoMessage, setPromoMessage] = useState<{ text: string; error: boolean } | null>(null);
+
+  if (!isOpen) return null;
 
   const formatPrice = (priceSAR: number) => {
     const converted = Math.round(priceSAR * currencyConfig.rate);
